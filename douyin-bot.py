@@ -115,6 +115,8 @@ def main():
     debug.dump_device_info()
     screenshot.check_screenshot()
 
+    i, next_rest, next_rest_time = (0, random.randrange(3, 10),
+                                    random.randrange(5, 10))
     while True:
         next_page()
 
@@ -148,6 +150,17 @@ def main():
                 thumbs_up()
                 follow_user()
 
+            i += 1
+            if i == next_rest:
+                print('')
+            for j in range(next_rest_time):
+                sys.stdout.write('\r程序将在 {}秒 后继续'.format(next_rest_time - j))
+                sys.stdout.flush()
+                time.sleep(1)
+            print('\n继续')
+            i, next_rest, next_rest_time = (0, random.randrange(30, 100),
+                                            random.randrange(10, 60))
+
         else:
             print(rsp)
             continue
@@ -159,5 +172,5 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         adb.run('kill-server')
-        print('\n谢谢使用', end='')
+        print('\n最后祝你身体健康，再见', end='')
         exit(0)

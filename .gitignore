@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+face/.DS_Store
+face/.DS_Store
+face/*.png
+face/.DS_Store
